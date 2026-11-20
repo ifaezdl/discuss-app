@@ -9,8 +9,9 @@ import {
 } from "@heroui/react";
 import * as actions from "@/actions";
 import { useActionState } from "react"; //this is a hook and just can used in cielnt side componets
+import FormButton from "../common/form-button";
 export default function TopicCreateFrom() {
-  const [formState, action] = useActionState(actions.createTopic, {
+  const [formState, action, isPending] = useActionState(actions.createTopic, {
     errors: {},
   });
   return (
@@ -43,8 +44,7 @@ export default function TopicCreateFrom() {
                   {formState.errors._form?.join(", ")}
                 </div>
               ) : null}
-
-              <Button type="submit">submit</Button>
+              <FormButton isLoading={isPending}>submit</FormButton>
             </div>
           </form>
         </PopoverContent>

@@ -27,6 +27,12 @@ export async function createTopic(
   formdata: FormData,
 ): Promise<CreateTopicFormState> {
   // TODO :revalidate the homepage after creating a topic
+
+  await new Promise((resolve: any) => {
+    setTimeout(() => {
+      resolve();
+    }, 2500);
+  });
   const session = await auth();
   const name = formdata.get("name");
   const description = formdata.get("description");
